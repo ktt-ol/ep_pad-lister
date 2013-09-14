@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Padlist</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link href="/pad-lister/static/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Padlist</h1>
+
+        <p>All pads, sorted by last edit date.</p>
+    </div>
+</div>
+
+<div class="container">
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Pad</th>
+            <th>Revision</th>
+            <th>Last edit date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% pads.forEach(function (pad) { %>
+        <tr>
+            <td><a href="/public/<%= pad.name %>"><%= pad.name %></a></td>
+            <td><%= pad.lastRevision %></td>
+            <td><%= pad.lastAccess %></td>
+        </tr>
+        <% }) %>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
