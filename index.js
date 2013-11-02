@@ -10,7 +10,7 @@ exports.eejsBlock_indexWrapper = function (hook_name, args, cb) {
 }
 
 exports.registerRoute = function (hook_name, args, cb) {
-var h = '<b>test</b>'
+  var h = '<b>test</b>'
   args.app.get('/pad-lister/static/bootstrap.min.css', function (req, res) {
     res.sendfile(__dirname + '/static/css/bootstrap.min.css');
   });
@@ -26,34 +26,36 @@ var h = '<b>test</b>'
 };
 
 function getDetailedPadList(callback) {
-  var padNames = padManager.listAllPads().padIDs;
+  padManager.listAllPads(function (err, listResult) {
+    var padNames = listResult.padIDs;
 
-  var padData = [];
-  padNames.forEach(function (padName) {
-    padManager.getPad(padName, function (err, pad) {
-      pad.getLastEdit(function (err, time) {
-        padData.push({
-          name: padName,
-          lastRevision: pad.head,
-          lastAccess: time
-        });
-
-        if (padData.length === padNames.length) {
-          // sort
-          padData = sortPadData(padData);
-          // format each timestamp
-          padData.forEach(function (padObj) {
-            padObj.lastAccess = formatDate(padObj.lastAccess);
+    var padData = [];
+    padNames.forEach(function (padName) {
+      padManager.getPad(padName, function (err, pad) {
+        pad.getLastEdit(function (err, time) {
+          padData.push({
+            name: padName,
+            lastRevision: pad.head,
+            lastAccess: time
           });
-          callback(padData);
-        }
-      });
-    }); // end getPad
-  }); // end forEach
+
+          if (padData.length === padNames.length) {
+            // sort
+            padData = sortPadData(padData);
+            // format each timestamp
+            padData.forEach(function (padObj) {
+              padObj.lastAccess = formatDate(padObj.lastAccess);
+            });
+            callback(padData);
+          }
+        });
+      }); // end getPad
+    }); // end forEach
+  });
 }
 
 // sort by last access
-function sortPadData(padData){
+function sortPadData(padData) {
   return padData.sort(function (a, b) {
     return b.lastAccess - a.lastAccess;
   });
