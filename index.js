@@ -7,7 +7,7 @@ var dateFormat = require('dateformat');
 exports.eejsBlock_indexWrapper = function (hook_name, args, cb) {
   args.content = args.content + eejs.require("ep_pad-lister/templates/linkToList.ejs");
   return cb();
-}
+};
 
 exports.registerRoute = function (hook_name, args, cb) {
   var h = '<b>test</b>'
