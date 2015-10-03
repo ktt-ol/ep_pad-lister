@@ -9,6 +9,13 @@
         body {
             font-size: 16px;
         }
+        code {
+           color: #c7254e;
+        }
+        footer {
+            background-color: #eeeeee;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -17,7 +24,7 @@
     <div class="container">
         <h1>Padlist</h1>
 
-        <p>All pads, sorted by last edit date.</p>
+        <p><em>All*</em> pads, sorted by last edit date.</p>
     </div>
 </div>
 
@@ -42,6 +49,12 @@
         </tbody>
     </table>
 
+
 </div>
+<footer>
+    <div class="container">
+        * pad names starting with <code><%= PRIVATE_PAD_PREFIX %></code> and new pads without any changes are NOT listed.
+    </div>
+</footer>
 </body>
 </html>
