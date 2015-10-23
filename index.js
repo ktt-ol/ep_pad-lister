@@ -16,7 +16,7 @@ exports.eejsBlock_indexWrapper = function (hook_name, args, cb) {
 
 exports.registerRoute = function (hook_name, args, cb) {
   args.app.get('/pad-lister/static/bootstrap.min.css', function (req, res) {
-    res.sendfile(__dirname + '/static/css/bootstrap.min.css');
+    res.sendFile(__dirname + '/static/css/bootstrap.min.css');
   });
 
   args.app.get('/pad-lister', function (req, res) {
