@@ -2,7 +2,22 @@
 
 A plugin for Etherpad-lite that shows a list of all pads sorted by last edit date.
 
-# installing
+# Features
+
+* List all pads, shows revision and last edit date
+* Ignores pads without any changes
+* Ignores private pads (= pads starting with `private_`)
+
+
+# Screenshots
+
+**New pad**
+![New Pad](https://ktt-ol.github.io/ep_pad-lister/images/new_pad.jpg)
+
+**Pad list**
+![Pad_List](https://ktt-ol.github.io/ep_pad-lister/images/pad_list.jpg)
+
+# Install
 
     npm install ep_pad-lister (from your etherpad-lite folder)
 
@@ -23,9 +38,9 @@ Put the follwing snippet into ```src/static/custom/index.css```
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .pad-lister-link-container .code {
-  font-family: monospace; 
+  font-family: monospace;
   padding: 0 5px;
-  color: #c7254e; 
+  color: #c7254e;
   background-color: #fff;
 }
 ```
