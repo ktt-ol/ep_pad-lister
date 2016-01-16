@@ -92,5 +92,5 @@ function sortPadData(padData) {
 }
 
 function formatDate(timestamp) {
-  return dateFormat(new Date(timestamp), 'dd.mm.yyyy hh:MM:ss');
+  return dateFormat(new Date(timestamp), 'dd.mm.yyyy HH:MM:ss');
 }
