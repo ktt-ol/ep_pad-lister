@@ -65,6 +65,10 @@ function getDetailedPadList(callback) {
         return;
       }
       padManager.getPad(padName, function (err, pad) {
+        if (!pad) {
+          doneAction();
+          return;
+        }
         // ignore pads without any changes
         if (pad.head === 0) {
           doneAction();
