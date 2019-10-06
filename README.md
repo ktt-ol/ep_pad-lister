@@ -22,7 +22,7 @@ A plugin for Etherpad-lite that shows a list of all pads sorted by last edit dat
     npm install ep_pad-lister (from your etherpad-lite folder)
 
 
-Put the follwing snippet into ```src/static/custom/index.css```
+Put the follwing snippet into ```src/static/skins/no-skin/index.css```
 
 ```
 .pad-lister-link-container {
