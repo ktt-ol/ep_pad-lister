@@ -1,13 +1,13 @@
 'use strict';
 
-var eejs = require('ep_etherpad-lite/node/eejs');
-var padManager = require('ep_etherpad-lite/node/db/PadManager');
-var dateFormat = require('dateformat');
+const eejs = require('ep_etherpad-lite/node/eejs');
+const padManager = require('ep_etherpad-lite/node/db/PadManager');
+const dateFormat = require('dateformat');
 
-var PRIVATE_PAD_PREFIX = 'private_';
+const PRIVATE_PAD_PREFIX = 'private_';
 
 exports.eejsBlock_indexWrapper = function (hook_name, args, cb) {
-  var render_args = {
+  const render_args = {
     PRIVATE_PAD_PREFIX: PRIVATE_PAD_PREFIX
   };
   args.content = args.content + eejs.require("ep_pad-lister/templates/linkToList.ejs", render_args);
@@ -15,13 +15,13 @@ exports.eejsBlock_indexWrapper = function (hook_name, args, cb) {
 };
 
 exports.registerRoute = function (hook_name, args, cb) {
-  args.app.get('/pad-lister/static/bootstrap.min.css', function (req, res) {
+  args.app.get('/pad-lister/static/bootstrap.min.css', (req, res) => {
     res.sendFile(__dirname + '/static/css/bootstrap.min.css');
   });
 
-  args.app.get('/pad-lister', function (req, res) {
-    getDetailedPadList(function (pads) {
-      var render_args = {
+  args.app.get('/pad-lister', (req, res) => {
+    getDetailedPadList().then(pads => {
+      const render_args = {
         PRIVATE_PAD_PREFIX: PRIVATE_PAD_PREFIX,
         pads: pads
       };
@@ -30,62 +30,49 @@ exports.registerRoute = function (hook_name, args, cb) {
   });
 };
 
-function getDetailedPadList(callback) {
+async function getDetailedPadList() {
+  let padData = [];
 
-  var padsToDo;
-  var padData = [];
+  const listResult = await padManager.listAllPads();
+  const padIDs = listResult.padIDs;
 
-  function doneAction() {
-    padsToDo--;
-    if (padsToDo > 0) {
-      return;
-    }
-    // sort
-    padData = sortPadData(padData);
-    // format each timestamp
-    padData.forEach(function (padObj) {
-      padObj.lastAccess = formatDate(padObj.lastAccess);
-    });
-    callback(padData);
+  // if we have no pads...
+  if (padIDs.length === 0) {
+    return [];
   }
 
-  padManager.listAllPads(function (err, listResult) {
-    var padNames = listResult.padIDs;
-    // if we have no pads...
-    if (padNames.length === 0) {
-      callback([]);
-      return;
+  // padsToDo = padNames.length;
+  for (let i = 0; i < padIDs.length; i++) {
+    const padID = padIDs[i];
+
+    // ignore private pads
+    if (padID.indexOf(PRIVATE_PAD_PREFIX) === 0) {
+      continue;
     }
+    const pad = await padManager.getPad(padID);
+    if (!pad) {
+      continue;
+    }
+    // ignore pads without any changes
+    if (pad.head === 0) {
+      continue;
+    }
+    const time = await pad.getLastEdit();
+    padData.push({
+      name: padID,
+      lastRevision: pad.head,
+      lastAccess: time
+    });
+  }
 
-    padsToDo = padNames.length;
-    padNames.forEach(function (padName) {
-      // ignore private pads
-      if (padName.indexOf(PRIVATE_PAD_PREFIX) === 0) {
-        doneAction();
-        return;
-      }
-      padManager.getPad(padName, function (err, pad) {
-        if (!pad) {
-          doneAction();
-          return;
-        }
-        // ignore pads without any changes
-        if (pad.head === 0) {
-          doneAction();
-          return;
-        }
-        pad.getLastEdit(function (err, time) {
-          padData.push({
-            name: padName,
-            lastRevision: pad.head,
-            lastAccess: time
-          });
+  padData = sortPadData(padData);
 
-          doneAction();
-        });
-      }); // end getPad
-    }); // end forEach
+  // format each timestamp
+  padData.forEach(function (padObj) {
+    padObj.lastAccess = formatDate(padObj.lastAccess);
   });
+
+  return padData;
 }
 
 // sort by last access
