@@ -3,6 +3,7 @@
 const eejs = require('ep_etherpad-lite/node/eejs');
 const padManager = require('ep_etherpad-lite/node/db/PadManager');
 const dateFormat = require('dateformat');
+const db = require('ep_etherpad-lite/node/db/DB').db;
 
 const PRIVATE_PAD_PREFIX = 'private_';
 
@@ -57,9 +58,17 @@ async function getDetailedPadList() {
     if (pad.head === 0) {
       continue;
     }
+    // support for ep_set_title_on_pad
+    let title;
+    db.get("title:"+padID, function(err, value){
+      if(!err && value) {
+        title = value;
+      }
+    });
     const time = await pad.getLastEdit();
     padData.push({
-      name: padID,
+      name: title ? title+' ('+padID+')' : padID,
+      padid: padID,
       lastRevision: pad.head,
       lastAccess: time
     });
