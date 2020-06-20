@@ -8,7 +8,7 @@ A plugin for Etherpad-lite that shows a list of all pads sorted by last edit dat
 * List all pads, shows revision and last edit date
 * Ignores pads without any changes
 * Ignores private pads (= pads starting with `private_`)
-
+* Supports [ep\_set\_title\_on\_pad](https://github.com/JohnMcLear/ep_set_title_on_pad)
 
 # Screenshots
 
