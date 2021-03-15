@@ -1,6 +1,6 @@
 {
   "name": "ep_pad-lister",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Provides a separate list with pads, ordered by last edit.",
   "author": "HolgerCremer@gmail.com",
   "readmeFilename": "README.md",
