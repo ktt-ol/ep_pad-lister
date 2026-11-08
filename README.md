@@ -21,8 +21,26 @@ A plugin for Etherpad-lite that shows a list of all pads sorted by last edit dat
 
 # Install
 
-Attention: this plugin (since 1.2.0) requires Etherpad-lite version >= 1.8. If you use an older Etherpad-lite installation, please use an older version of this plugin.  
+This plugin requires Etherpad 1.8 or newer since version 1.2.0.
+For older Etherpad installations, use an earlier version of this plugin.
 
-```shell script
-npm install ep_pad-lister (from your etherpad-lite folder)
+The integration with ep_set_title_on_pad has been updated to use
+Etherpad's Promise-based database API and has been tested with
+Etherpad 3.3.15. Compatibility of this change with older Etherpad
+versions has not been verified.
+
+## Etherpad 3.x
+
+Install the plugin from your Etherpad directory:
+
+```shell
+pnpm run plugins install ep_pad-lister
+```
+
+## Older Etherpad versions
+
+Install the plugin from your Etherpad directory:
+
+```shell
+npm install ep_pad-lister
 ```
