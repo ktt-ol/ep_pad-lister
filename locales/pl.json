@@ -1,0 +1,13 @@
+{
+  "ep_pad_lister.title": "Lista padów",
+  "ep_pad_lister.description": "Wszystkie* pady, posortowane według daty ostatniej edycji.",
+  "ep_pad_lister.pad": "Pad",
+  "ep_pad_lister.revision": "Wersja",
+  "ep_pad_lister.last_edit": "Ostatnia edycja",
+  "ep_pad_lister.link_before": "Zobacz listę",
+  "ep_pad_lister.link_all": "wszystkich*",
+  "ep_pad_lister.link_after": "padów na stronie",
+  "ep_pad_lister.exclusions_before": "* Pady, których nazwy zaczynają się od",
+  "ep_pad_lister.exclusions_after": "oraz nowe pady bez żadnych zmian NIE są wyświetlane.",
+  "ep_pad_lister.link_label": "Lista padów"
+}

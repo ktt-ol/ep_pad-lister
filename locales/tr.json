@@ -1,0 +1,13 @@
+{
+  "ep_pad_lister.title": "Pad listesi",
+  "ep_pad_lister.description": "Tüm* padler, son düzenleme tarihine göre sıralanmıştır.",
+  "ep_pad_lister.pad": "Pad",
+  "ep_pad_lister.revision": "Revizyon",
+  "ep_pad_lister.last_edit": "Son düzenleme tarihi",
+  "ep_pad_lister.link_before": "",
+  "ep_pad_lister.link_all": "Tüm*",
+  "ep_pad_lister.link_after": "padleri görüntülemek için:",
+  "ep_pad_lister.exclusions_before": "* Adları",
+  "ep_pad_lister.exclusions_after": "ile başlayan padler ve henüz düzenlenmemiş yeni padler listelenmez.",
+  "ep_pad_lister.link_label": "Pad listesi"
+}
