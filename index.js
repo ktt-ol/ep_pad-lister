@@ -4,6 +4,7 @@ const eejs = require('ep_etherpad-lite/node/eejs');
 const padManager = require('ep_etherpad-lite/node/db/PadManager');
 const dateFormat = require('dateformat');
 const db = require('ep_etherpad-lite/node/db/DB').db;
+const settings = require('ep_etherpad-lite/node/utils/Settings');
 
 const PRIVATE_PAD_PREFIX = 'private_';
 
@@ -22,11 +23,18 @@ exports.registerRoute = function (hook_name, args) {
     });
   });
 
+  args.app.get('/pad-lister/static/localization.js', (req, res) => {
+    res.sendFile('static/js/localization.js', {
+      root: __dirname
+    });
+  });
+
   args.app.get('/pad-lister', (req, res) => {
     getDetailedPadList().then(pads => {
       const render_args = {
         PRIVATE_PAD_PREFIX: PRIVATE_PAD_PREFIX,
-        pads: pads
+        pads: pads,
+        cookiePrefixJson: JSON.stringify(settings.cookie?.prefix || '').replace(/</g, '\\u003c')
       };
       res.send(eejs.require('ep_pad-lister/templates/list.html', render_args));
     });

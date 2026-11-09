@@ -1,0 +1,13 @@
+{
+  "ep_pad_lister.title": "Pad-Übersicht",
+  "ep_pad_lister.description": "Alle* Pads, sortiert nach dem Datum der letzten Bearbeitung.",
+  "ep_pad_lister.pad": "Pad",
+  "ep_pad_lister.revision": "Revision",
+  "ep_pad_lister.last_edit": "Letzte Bearbeitung",
+  "ep_pad_lister.link_before": "Eine Übersicht über",
+  "ep_pad_lister.link_all": "alle*",
+  "ep_pad_lister.link_after": "Pads findest du in der",
+  "ep_pad_lister.exclusions_before": "* Pads, deren Namen mit",
+  "ep_pad_lister.exclusions_after": "beginnen, sowie neue Pads ohne Änderungen werden nicht aufgelistet.",
+  "ep_pad_lister.link_label": "Pad-Übersicht"
+}

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Padlist</title>
+    <title data-l10n-id="ep_pad_lister.title">Padlist</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link href="/pad-lister/static/bootstrap.min.css" rel="stylesheet">
+    <link rel="localizations" type="application/l10n+json" href="/locales.json">
     <style type="text/css">
         body {
             font-size: 16px;
@@ -22,9 +23,9 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h1>Padlist</h1>
+        <h1 data-l10n-id="ep_pad_lister.title">Padlist</h1>
 
-        <p><em>All*</em> pads, sorted by last edit date.</p>
+        <p data-l10n-id="ep_pad_lister.description">All* pads, sorted by last edit date.</p>
     </div>
 </div>
 
@@ -33,9 +34,9 @@
     <table class="table table-striped table-hover">
         <thead>
         <tr>
-            <th>Pad</th>
-            <th>Revision</th>
-            <th>Last edit date</th>
+            <th data-l10n-id="ep_pad_lister.pad">Pad</th>
+            <th data-l10n-id="ep_pad_lister.revision">Revision</th>
+            <th data-l10n-id="ep_pad_lister.last_edit">Last edit date</th>
         </tr>
         </thead>
         <tbody>
@@ -51,10 +52,21 @@
 
 
 </div>
+
 <footer>
     <div class="container">
-        * pad names starting with <code><%= PRIVATE_PAD_PREFIX %></code> and new pads without any changes are NOT listed.
+        <span data-l10n-id="ep_pad_lister.exclusions_before">* pad names starting with</span>
+        <code><%= PRIVATE_PAD_PREFIX %></code>
+        <span data-l10n-id="ep_pad_lister.exclusions_after">and new pads without any changes are NOT listed.</span>
     </div>
 </footer>
+
+<script>
+  window.clientVars = {
+    cookiePrefix: <%- cookiePrefixJson %>
+  };
+</script>
+<script src="/pad-lister/static/localization.js"></script>
+
 </body>
 </html>

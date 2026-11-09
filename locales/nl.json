@@ -1,0 +1,13 @@
+{
+  "ep_pad_lister.title": "Pad-overzicht",
+  "ep_pad_lister.description": "Alle* pads, gesorteerd op datum van de laatste bewerking.",
+  "ep_pad_lister.pad": "Pad",
+  "ep_pad_lister.revision": "Revisie",
+  "ep_pad_lister.last_edit": "Laatste bewerking",
+  "ep_pad_lister.link_before": "Bekijk een overzicht van",
+  "ep_pad_lister.link_all": "alle*",
+  "ep_pad_lister.link_after": "pads in het",
+  "ep_pad_lister.exclusions_before": "* Pads waarvan de naam begint met",
+  "ep_pad_lister.exclusions_after": "en nieuwe pads zonder wijzigingen worden NIET weergegeven.",
+  "ep_pad_lister.link_label": "Pad-overzicht"
+}

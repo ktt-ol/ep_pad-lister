@@ -1,0 +1,13 @@
+{
+  "ep_pad_lister.title": "Список падів",
+  "ep_pad_lister.description": "Усі* пади, відсортовані за датою останнього редагування.",
+  "ep_pad_lister.pad": "Пад",
+  "ep_pad_lister.revision": "Ревізія",
+  "ep_pad_lister.last_edit": "Останнє редагування",
+  "ep_pad_lister.link_before": "Перегляньте список",
+  "ep_pad_lister.link_all": "усіх*",
+  "ep_pad_lister.link_after": "падів у розділі",
+  "ep_pad_lister.exclusions_before": "* Пади, назви яких починаються з",
+  "ep_pad_lister.exclusions_after": "а також нові пади без жодних змін НЕ відображаються у списку.",
+  "ep_pad_lister.link_label": "Список падів"
+}
