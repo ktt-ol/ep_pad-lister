@@ -62,11 +62,12 @@ async function getDetailedPadList() {
     }
     // support for ep_set_title_on_pad
     let title;
-    db.get("title:"+padID, function(err, value){
-      if(!err && value) {
-        title = value;
-      }
-    });
+    try {
+      title = await db.get(`title:${padID}`);
+    } catch (err) {
+      console.error(`Error loading title for pad ${padID}:`, err);
+    }
+
     const time = await pad.getLastEdit();
     padData.push({
       name: title ? title+' ('+padID+')' : padID,
