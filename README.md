@@ -1,3 +1,7 @@
+# Archived 
+
+This plugin is only tested for the v1.x versions. I don't use it anymore and don't have time to test and check any pull requests. Please create a fork that works for newer versions.
+
 # ep_pad-lister
 
 A plugin for Etherpad-lite that shows a list of all pads sorted by last edit date.
